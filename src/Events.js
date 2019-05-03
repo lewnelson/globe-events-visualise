@@ -46,7 +46,7 @@ class Events extends Component {
     // Height in pixels
     height: PropTypes.number.isRequired,
     // URL for the globes main texture
-    globeTextureURL: PropTypes.string.isRequired,
+    globeTextureURL: PropTypes.string,
     // URL for a bump map if applicable
     globeBumpTextureURL: PropTypes.string,
     // Floating point between 0 and 1 inclusive
@@ -108,6 +108,8 @@ class Events extends Component {
     },
     markerDropDistance: 1,
     initRotationPoints: [],
+    globeTextureURL: 'https://lewnelson.github.io/react-globe-events-visualiser/assets/images/textures/realistic-globe/globe.jpg',
+    globeBumpTextureURL: 'https://lewnelson.github.io/react-globe-events-visualiser/assets/images/textures/realistic-globe/globe.jpg',
     theme: {
       markerColor: 0x709cf0,
       markerHighlightColor: 0x1fc1c3,

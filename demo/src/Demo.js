@@ -5,7 +5,7 @@ import Events from '../../src/Events'
 const events = [
   [
     {
-      "id": "456",
+      "id": "123",
       "lat": 32.840816497802734,
       "lon": -117.27436065673828,
       "name": "San Diego Meetup",
@@ -27,7 +27,7 @@ const events = [
       "url": "https://example.org/"
     },
     {
-      "id": "456",
+      "id": "789",
       "lat": 51.5285582,
       "lon": -0.2416805,
       "name": "London Meetup",
@@ -39,7 +39,7 @@ const events = [
   ],
   [
     {
-      id: '123',
+      id: 'abc',
       lat: -25.0253898,
       lon: 46.9540537,
       name: 'Madagascar Event',
@@ -51,7 +51,7 @@ const events = [
   ],
   [
     {
-      "id": "456",
+      "id": "def",
       "lat": 35.6681625,
       "lon": 139.6007838,
       "name": "Tokyo Meetup",
@@ -106,8 +106,6 @@ const Demo = () => {
       events={events}
       width={width}
       height={height}
-      globeTextureURL='/assets/images/textures/realistic-globe/globe.jpg'
-      globeBumpTextureURL='/assets/images/textures/realistic-globe/globe-bump.jpg'
       initRotationPoints={initRotationPoints}
       initRotationAnimationDuration={300}
     />
