@@ -20,7 +20,7 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var events = [[{
-  "id": "456",
+  "id": "123",
   "lat": 32.840816497802734,
   "lon": -117.27436065673828,
   "name": "San Diego Meetup",
@@ -38,7 +38,7 @@ var events = [[{
   "localTime": "17:30",
   "url": "https://example.org/"
 }, {
-  "id": "456",
+  "id": "789",
   "lat": 51.5285582,
   "lon": -0.2416805,
   "name": "London Meetup",
@@ -47,7 +47,7 @@ var events = [[{
   "localTime": "19:45",
   "url": "https://example.org/"
 }], [{
-  id: '123',
+  id: 'abc',
   lat: -25.0253898,
   lon: 46.9540537,
   name: 'Madagascar Event',
@@ -56,7 +56,7 @@ var events = [[{
   localTime: '18:00',
   url: 'https://example.org/'
 }], [{
-  "id": "456",
+  "id": "def",
   "lat": 35.6681625,
   "lon": 139.6007838,
   "name": "Tokyo Meetup",
@@ -107,8 +107,6 @@ var Demo = function Demo() {
     events: events,
     width: width,
     height: height,
-    globeTextureURL: "/assets/images/textures/realistic-globe/globe.jpg",
-    globeBumpTextureURL: "/assets/images/textures/realistic-globe/globe-bump.jpg",
     initRotationPoints: initRotationPoints,
     initRotationAnimationDuration: 300
   });
@@ -86955,7 +86953,7 @@ _defineProperty(Events, "propTypes", {
   // Height in pixels
   height: _propTypes["default"].number.isRequired,
   // URL for the globes main texture
-  globeTextureURL: _propTypes["default"].string.isRequired,
+  globeTextureURL: _propTypes["default"].string,
   // URL for a bump map if applicable
   globeBumpTextureURL: _propTypes["default"].string,
   // Floating point between 0 and 1 inclusive
@@ -87011,6 +87009,8 @@ _defineProperty(Events, "defaultProps", {
   },
   markerDropDistance: 1,
   initRotationPoints: [],
+  globeTextureURL: 'https://lewnelson.github.io/react-globe-events-visualiser/assets/images/textures/realistic-globe/globe.jpg',
+  globeBumpTextureURL: 'https://lewnelson.github.io/react-globe-events-visualiser/assets/images/textures/realistic-globe/globe.jpg',
   theme: {
     markerColor: 0x709cf0,
     markerHighlightColor: 0x1fc1c3,
