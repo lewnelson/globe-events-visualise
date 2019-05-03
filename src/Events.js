@@ -18,35 +18,55 @@ const Container = styled.div`
 
 class Events extends Component {
   static propTypes = {
+    // Array of events to display on the globe
     events: PropTypes.arrayOf(PropTypes.arrayOf(
       PropTypes.shape({
+        // Unique event id
         id: PropTypes.string.isRequired,
+        // Latitude
         lat: PropTypes.number.isRequired,
+        // Longitude
         lon: PropTypes.number.isRequired,
+        // Name (title) of the event
         name: PropTypes.string.isRequired,
+        // Location appears on the globe
         location: PropTypes.string.isRequired,
+        // Appears in the dialog if defined, otherwise location is used
         address: PropTypes.string,
+        // Date of the event
         date: PropTypes.string.isRequired,
+        // Local time of the event
         localTime: PropTypes.string.isRequired,
-        url: PropTypes.string.isRequired,
+        // URL to the event
+        url: PropTypes.string.isRequired
       }).isRequired
     )).isRequired,
+    // Width in pixels
     width: PropTypes.number.isRequired,
+    // Height in pixels
     height: PropTypes.number.isRequired,
+    // URL for the globes main texture
     globeTextureURL: PropTypes.string.isRequired,
+    // URL for a bump map if applicable
     globeBumpTextureURL: PropTypes.string,
+    // Floating point between 0 and 1 inclusive
     initZoomLevel: PropTypes.number,
+    // How quickly will the globe rotate per 1000km on the init animation
     initRotationAnimationDuration: PropTypes.number,
+    // Points to rotate around when the globe loads
     initRotationPoints: PropTypes.arrayOf(PropTypes.shape({
       lat: PropTypes.number.isRequired,
       lon: PropTypes.number.isRequired,
     })),
+    // Adjust the lighting for the scene
     lighting: PropTypes.shape({
       color: PropTypes.number,
       intensity: PropTypes.number,
       angle: PropTypes.number
     }),
+    // Distance that the markers will drop from space
     markerDropDistance: PropTypes.number,
+    // Colors etc.
     theme: PropTypes.shape({
       markerColor: PropTypes.number,
       markerHighlightColor: PropTypes.number,
@@ -61,15 +81,17 @@ class Events extends Component {
         headerBackground: PropTypes.string,
         bodyBackground: PropTypes.string,
         containerBackground: PropTypes.string,
-        shadowColor: PropTypes.string.isRequired,
+        shadowColor: PropTypes.string,
         linkColor: PropTypes.string,
         buttonColor: PropTypes.string,
         bodyFontFamily: PropTypes.string,
         bodyFontColor: PropTypes.string,
+        // JSX or a string for the character to appear
         backButton: PropTypes.oneOfType([
           PropTypes.string,
           PropTypes.node
         ]),
+        // JSX or a string for the character to appear
         closeButton: PropTypes.oneOfType([
           PropTypes.string,
           PropTypes.node
