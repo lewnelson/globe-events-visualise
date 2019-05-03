@@ -1,0 +1,58 @@
+{
+  "name": "react-globe-events-visualiser",
+  "version": "1.0.0",
+  "description": "React component for a WebGL globe events visualiser",
+  "main": "build/index.js",
+  "scripts": {
+    "lint": "eslint src/",
+    "lint:changed": "eslint",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./scripts/post-install.sh",
+    "build": "babel -d build/ src/ --source-maps inline",
+    "build:prod": "babel -d build/ src/",
+    "build:watch": "npm run build -- --watch",
+    "prepublish": "npm run build:prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lewnelson/react-globe-events-visualiser.git"
+  },
+  "keywords": [
+    "react",
+    "webgl",
+    "globe",
+    "events",
+    "visualiser"
+  ],
+  "author": "Lewis Nelson <lewis@lewnelson.com> (https://www.lewnelson.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lewnelson/react-globe-events-visualiser/issues"
+  },
+  "homepage": "https://github.com/lewnelson/react-globe-events-visualiser#readme",
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.0",
+    "three": "^0.104.0",
+    "three-orbitcontrols": "^2.102.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-jsx": "^6.0.2",
+    "eslint-config-standard-react": "^7.0.2",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}
