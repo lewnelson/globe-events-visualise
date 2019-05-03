@@ -1,6 +1,8 @@
 # React events WebGL globe visualisation
 This library is for creating a 3D visualisation of events around the globe in React using [THREE.js](https://threejs.org/).
 
+[DEMO](https://lewnelson.github.io/react-globe-events-visualiser/index.html)
+
 ## Make it so
 ```
 npm install --save git+https://git@github.com/lewnelson/react-globe-events.git#v1
