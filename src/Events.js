@@ -91,7 +91,7 @@ class Events extends Component {
           PropTypes.string,
           PropTypes.node
         ]),
-        // JSX or a string for the character to appear
+        // JSX or a string for the ionicon icon to appear https://ionicons.com/ prepend ios- or md-
         closeButton: PropTypes.oneOfType([
           PropTypes.string,
           PropTypes.node
@@ -129,8 +129,8 @@ class Events extends Component {
         buttonColor: '#000',
         bodyFontFamily: 'sans-serif',
         bodyFontColor: '#000',
-        backButton: '↞',
-        closeButton: '⤫'
+        backButton: 'md-arrow-back',
+        closeButton: 'md-close-circle-outline'
       }
     }
   }
@@ -186,7 +186,7 @@ class Events extends Component {
   getDialogWidth () {
     let width = this.props.width / 3
     if (width < 320) width = 320
-    if (width > 500) width = 500
+    if (width > 400) width = 400
     return width
   }
 

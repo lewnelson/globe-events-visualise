@@ -87,17 +87,20 @@ const initRotationPoints = [
 ]
 
 const Demo = () => {
-  const [ width, setWidth ] = useState(window.innerWidth)
-  const [ height, setHeight ] = useState(window.innerHeight)
+  const [ width, setWidth ] = useState(window.screen.availWidth)
+  const [ height, setHeight ] = useState(window.screen.availHeight)
 
-  window.onResize = () => {
-    setWidth(window.innerWidth)
-    setHeight(window.innerHeight)
+
+  const onResize = () => {
+    setWidth(window.screen.availWidth)
+    setHeight(window.screen.availHeight)
   }
 
   useEffect(() => {
+    window.addEventListener('resize', onResize)
+
     return () => {
-      window.onResize = null
+      window.removeEventListener('resize', onResize)
     }
   }, [])
 
@@ -106,7 +109,6 @@ const Demo = () => {
       events={events}
       width={width}
       height={height}
-      initRotationPoints={initRotationPoints}
       initRotationAnimationDuration={300}
     />
   )
