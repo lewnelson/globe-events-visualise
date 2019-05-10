@@ -7,7 +7,7 @@
     "lint": "eslint src/",
     "lint:changed": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npm run build && ./scripts/post-install.sh",
+    "postinstall": "./scripts/post-install.sh",
     "build": "babel -d build/ src/ --source-maps inline",
     "build:watch": "npm run build -- --watch",
     "build:demo": "./scripts/build-demo.sh",
