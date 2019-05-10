@@ -303,7 +303,7 @@ class Events extends Component {
         >
           {this.state.showDialog && this.state.activeEvents &&
             <div key='dialog-container'>
-              this.renderDialog()
+              {this.renderDialog()}
             </div>
           }
         </ReactCSSTransitionGroup>
