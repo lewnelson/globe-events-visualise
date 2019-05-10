@@ -294,7 +294,7 @@ class Events extends Component {
           transitionLeaveTimeout={dialog.transitionLeaveTimeout}
         >
           {this.state.showDialog && this.state.activeEvents &&
-            {this.renderDialog()}
+            this.renderDialog()
           }
         </ReactCSSTransitionGroup>
       </Container>
