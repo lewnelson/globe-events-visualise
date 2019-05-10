@@ -8,11 +8,8 @@
     "lint:changed": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "./scripts/post-install.sh",
-    "build": "babel -d build/ src/ --source-maps inline",
-    "build:watch": "npm run build -- --watch",
     "build:demo": "./scripts/build-demo.sh",
     "bundle:demo": "browserify demo/src/index.js -o public/assets/javascript/demo.js -t [ babelify --presets [ @babel/preset-env @babel/preset-react ] --plugins [ @babel/plugin-proposal-class-properties ] ]",
-    "prepublish": "npm run build",
     "deploy": "npm run build:demo && gh-pages -d public -b gh-pages"
   },
   "repository": {
