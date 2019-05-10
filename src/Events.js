@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import Scene from './Scene'
 import Globe from './Globe'
@@ -86,6 +87,9 @@ class Events extends Component {
         buttonColor: PropTypes.string,
         bodyFontFamily: PropTypes.string,
         bodyFontColor: PropTypes.string,
+        transitionName: PropTypes.number,
+        transitionEnterTimeout: PropTypes.number,
+        transitionLeaveTimeout: PropTypes.number,
         // JSX or a string for the character to appear
         backButton: PropTypes.oneOfType([
           PropTypes.string,
@@ -118,6 +122,9 @@ class Events extends Component {
       loadingComponent: null,
       loadingComponentColor: '#0000ff',
       dialog: {
+        transitionName: 'dialog',
+        transitionEnterTimeout: 500,
+        transitionLeaveTimeout: 500,
         titleFontFamily: 'sans-serif',
         titleFontColor: '#000',
         titleFontWeight: '600',
@@ -232,6 +239,7 @@ class Events extends Component {
   render () {
     const lighting = { ...Events.defaultProps.lighting, ...this.props.lighting }
     const theme = { ...Events.defaultProps.theme, ...this.props.theme }
+    const dialog = { ...(this.props.theme || {}).dialog, ...Events.defaultProps.theme.dialog }
     return (
       <Container width={this.props.width} height={this.props.height}>
         <Scene width={this.props.width} height={this.props.height} controlsEnabled={this.state.controlsEnabled} initZoomLevel={this.props.initZoomLevel}>
@@ -276,7 +284,13 @@ class Events extends Component {
           }
         </Scene>
         {!this.state.globeReady && this.renderLoader()}
-        {this.renderDialog()}
+        <ReactCSSTransitionGroup
+          transitionName={dialog.transitionName}
+          transitionEnterTimeout={dialog.transitionEnterTimeout}
+          transitionLeaveTimeout={dialog.transitionLeaveTimeout}
+        >
+          {this.renderDialog()}
+        </ReactCSSTransitionGroup>
       </Container>
     )
   }
