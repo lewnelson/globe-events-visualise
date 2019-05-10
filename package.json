@@ -11,7 +11,7 @@
     "build:watch": "npm run build -- --watch",
     "build:demo": "./scripts/build-demo.sh",
     "bundle:demo": "browserify demo/src/index.js -o public/assets/javascript/demo.js -t [ babelify --presets [ @babel/preset-env @babel/preset-react ] --plugins [ @babel/plugin-proposal-class-properties ] ]",
-    "prepublish": "npm run build",
+    "postinstall": "npm run build",
     "deploy": "npm run build:demo && gh-pages -d public -b gh-pages"
   },
   "repository": {
@@ -32,6 +32,11 @@
   },
   "homepage": "https://github.com/lewnelson/react-globe-events-visualiser#readme",
   "dependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -44,11 +49,6 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",
