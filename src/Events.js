@@ -91,6 +91,9 @@ class Events extends Component {
         transitionEnterTimeout: PropTypes.number,
         transitionLeaveTimeout: PropTypes.number,
         transitionAppearTimeout: PropTypes.number,
+        transitionAppear: PropTypes.bool,
+        transitionEnter: PropTypes.bool,
+        transitionLeave: PropTypes.bool,
         // JSX or a string for the character to appear
         backButton: PropTypes.oneOfType([
           PropTypes.string,
@@ -127,6 +130,9 @@ class Events extends Component {
         transitionEnterTimeout: 500,
         transitionLeaveTimeout: 500,
         transitionAppearTimeout: 100,
+        transitionAppear: false,
+        transitionEnter: true,
+        transitionLeave: true,
         titleFontFamily: 'sans-serif',
         titleFontColor: '#000',
         titleFontWeight: '600',
@@ -287,15 +293,19 @@ class Events extends Component {
         </Scene>
         {!this.state.globeReady && this.renderLoader()}
         <ReactCSSTransitionGroup
-          transitionAppear
+          transitionAppear={dialog.transitionAppear}
           transitionAppearTimeout={dialog.transitionAppearTimeout}
           transitionName={dialog.transitionName}
+          transitionEnter={dialog.transitionEnter}
           transitionEnterTimeout={dialog.transitionEnterTimeout}
+          transitionLeave={dialog.transitionLeave}
           transitionLeaveTimeout={dialog.transitionLeaveTimeout}
         >
-          {this.state.showDialog && this.state.activeEvents &&
-            this.renderDialog()
-          }
+          <div key='dialog-container'>
+            {this.state.showDialog && this.state.activeEvents &&
+              this.renderDialog()
+            }
+          </div>
         </ReactCSSTransitionGroup>
       </Container>
     )
