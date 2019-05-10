@@ -301,11 +301,11 @@ class Events extends Component {
           transitionLeave={dialog.transitionLeave}
           transitionLeaveTimeout={dialog.transitionLeaveTimeout}
         >
-          <div key='dialog-container'>
-            {this.state.showDialog && this.state.activeEvents &&
+          {this.state.showDialog && this.state.activeEvents &&
+            <div key='dialog-container'>
               this.renderDialog()
-            }
-          </div>
+            </div>
+          }
         </ReactCSSTransitionGroup>
       </Container>
     )
