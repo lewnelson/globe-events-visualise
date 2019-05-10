@@ -256,6 +256,7 @@ function (_Component) {
     key: "initialiseOrbits",
     value: function initialiseOrbits() {
       this.controls.enabled = this.props.controlsEnabled;
+      this.controls.enableZoom = false;
       this.controls.enablePan = false;
       this.controls.enableDamping = true;
       this.controls.dampingFactor = 1.6;
