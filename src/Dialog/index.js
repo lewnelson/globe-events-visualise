@@ -191,26 +191,28 @@ export default class Dialog extends Component {
     const { closeDialog, theme } = this.props
     return (
       <Header background={theme.headerBackground}>
-        <BackButton
-          showBack={showBack}
-          onClick={() => showBack && this.goBack()}
-          color={theme.buttonColor}
-        >
-          {this.getBackButtonIcon()}
-        </BackButton>
-        <Title
-          color={theme.titleFontColor}
-          fontFamily={theme.titleFontFamily}
-          fontWeight={theme.titleFontWeight}
-        >
-          {title}
-        </Title>
-        <CloseButton
-          onClick={closeDialog}
-          color={theme.buttonColor}
-        >
-          {this.getCloseButtonIcon()}
-        </CloseButton>
+        <div className='dialog-header'>
+          <BackButton
+            showBack={showBack}
+            onClick={() => showBack && this.goBack()}
+            color={theme.buttonColor}
+          >
+            {this.getBackButtonIcon()}
+          </BackButton>
+          <Title
+            color={theme.titleFontColor}
+            fontFamily={theme.titleFontFamily}
+            fontWeight={theme.titleFontWeight}
+          >
+            {title}
+          </Title>
+          <CloseButton
+            onClick={closeDialog}
+            color={theme.buttonColor}
+          >
+            {this.getCloseButtonIcon()}
+          </CloseButton>
+        </div>
       </Header>
     )
   }
@@ -251,7 +253,7 @@ export default class Dialog extends Component {
       <Container className='dialog' width={width} height={height} background={theme.containerBackground} shadowColor={theme.shadowColor}>
         {this.getHeader(event.name, this.props.events.length > 1)}
         <ScrollWrapper>
-          <Body fontFamily={theme.bodyFontFamily} color={theme.bodyFontColor} background={theme.bodyBackground}>
+          <Body className='dialog-body' fontFamily={theme.bodyFontFamily} color={theme.bodyFontColor} background={theme.bodyBackground}>
             <Field>
               <Label>Where?</Label>
               <Value>{event.location}</Value>
