@@ -239,7 +239,7 @@ class Events extends Component {
   render () {
     const lighting = { ...Events.defaultProps.lighting, ...this.props.lighting }
     const theme = { ...Events.defaultProps.theme, ...this.props.theme }
-    const dialog = { ...(this.props.theme || {}).dialog, ...Events.defaultProps.theme.dialog }
+    const dialog = { ...Events.defaultProps.theme.dialog, ...(this.props.theme || {}).dialog }
     return (
       <Container width={this.props.width} height={this.props.height}>
         <Scene width={this.props.width} height={this.props.height} controlsEnabled={this.state.controlsEnabled} initZoomLevel={this.props.initZoomLevel}>
