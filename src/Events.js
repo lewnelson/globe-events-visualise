@@ -302,7 +302,7 @@ class Events extends Component {
           transitionLeaveTimeout={dialog.transitionLeaveTimeout}
         >
           {this.state.showDialog && this.state.activeEvents &&
-            <div key='dialog-container'>
+            <div className='dialog-container' key='dialog-container'>
               {this.renderDialog()}
             </div>
           }
