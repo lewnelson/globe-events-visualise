@@ -93,11 +93,9 @@ class Events extends Component {
         buttonColor: PropTypes.string,
         bodyFontFamily: PropTypes.string,
         bodyFontColor: PropTypes.string,
-        transitionName: PropTypes.number,
+        transitionName: PropTypes.string,
         transitionEnterTimeout: PropTypes.number,
         transitionLeaveTimeout: PropTypes.number,
-        transitionAppearTimeout: PropTypes.number,
-        transitionAppear: PropTypes.bool,
         transitionEnter: PropTypes.bool,
         transitionLeave: PropTypes.bool,
         // JSX or a string for the character to appear
