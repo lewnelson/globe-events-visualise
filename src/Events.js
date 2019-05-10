@@ -221,8 +221,7 @@ class Events extends Component {
   }
 
   renderDialog () {
-    const { showDialog, activeEvents } = this.state
-    if (!showDialog || !activeEvents) return null
+    const { activeEvents } = this.state
     const { dialog } = this.props.theme || {}
     const defaultDialog = Events.defaultProps.theme.dialog
     return (
@@ -289,7 +288,9 @@ class Events extends Component {
           transitionEnterTimeout={dialog.transitionEnterTimeout}
           transitionLeaveTimeout={dialog.transitionLeaveTimeout}
         >
-          {this.renderDialog()}
+          {this.state.showDialog && this.state.activeEvents &&
+            {this.renderDialog()}
+          }
         </ReactCSSTransitionGroup>
       </Container>
     )
