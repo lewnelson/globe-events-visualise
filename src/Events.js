@@ -228,6 +228,7 @@ class Events extends Component {
     const defaultDialog = Events.defaultProps.theme.dialog
     return (
       <Dialog
+        key={activeEvents.map(e => e.id).join('')}
         events={activeEvents}
         closeDialog={this.onDialogClose}
         width={this.getDialogWidth()}
