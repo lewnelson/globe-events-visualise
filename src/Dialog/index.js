@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Ionicons from 'react-icons/io'
+import * as Ionicons from 'react-icons/io'
 
-console.log('Ionicons', Ionicons)
 const Container = styled.div`
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;

@@ -2,18 +2,17 @@
   "name": "react-globe-events-visualiser",
   "version": "1.0.0",
   "description": "React component for a WebGL globe events visualiser",
-  "main": "build/index.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint src/",
     "lint:changed": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "./scripts/post-install.sh",
     "build": "babel -d build/ src/ --source-maps inline",
-    "build:prod": "browserify src/index.js -o build/index.js -t [ babelify --presets [ @babel/preset-env @babel/preset-react ] --plugins [ @babel/plugin-proposal-class-properties ] ]",
     "build:watch": "npm run build -- --watch",
     "build:demo": "./scripts/build-demo.sh",
     "bundle:demo": "browserify demo/src/index.js -o public/assets/javascript/demo.js -t [ babelify --presets [ @babel/preset-env @babel/preset-react ] --plugins [ @babel/plugin-proposal-class-properties ] ]",
-    "prepublish": "npm run build:prod",
+    "prepublish": "npm run build",
     "deploy": "npm run build:demo && gh-pages -d public -b gh-pages"
   },
   "repository": {
@@ -34,15 +33,16 @@
   },
   "homepage": "https://github.com/lewnelson/react-globe-events-visualiser#readme",
   "dependencies": {
-    "@babel/polyfill": "^7.4.4",
-    "babel-polyfill": "^6.26.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-icons": "^3.6.1",
-    "styled-components": "^4.2.0",
+    "regenerator-runtime": "^0.13.2",
     "three": "^0.104.0",
     "three-orbitcontrols": "^2.102.1"
+  },
+  "peerDependencies": {
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
