@@ -228,7 +228,7 @@ export default class Dialog extends Component {
     const height = this.getHeight()
     const title = `Events near ${events[0].location}`
     return (
-      <Container width={width} height={height} background={theme.containerBackground} shadowColor={theme.shadowColor}>
+      <Container className='dialog' width={width} height={height} background={theme.containerBackground} shadowColor={theme.shadowColor}>
         {this.getHeader(title, false)}
         <ScrollWrapper>
           <Body background={theme.bodyBackground}>
@@ -248,7 +248,7 @@ export default class Dialog extends Component {
     const width = this.getWidth()
     const height = this.getHeight()
     return (
-      <Container width={width} height={height} background={theme.containerBackground} shadowColor={theme.shadowColor}>
+      <Container className='dialog' width={width} height={height} background={theme.containerBackground} shadowColor={theme.shadowColor}>
         {this.getHeader(event.name, this.props.events.length > 1)}
         <ScrollWrapper>
           <Body fontFamily={theme.bodyFontFamily} color={theme.bodyFontColor} background={theme.bodyBackground}>
