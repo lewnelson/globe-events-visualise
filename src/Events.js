@@ -15,6 +15,12 @@ const Container = styled.div`
   display: block;
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
+
+  .dialog-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
 `
 
 class Events extends Component {
