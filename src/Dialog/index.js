@@ -25,9 +25,12 @@ const ScrollWrapper = styled.div`
 
 const Header = styled.div`
   background: ${({ background }) => background};
-  display: flex;
-  flex-direction: row;
   padding: 16px 8px;
+
+  > div {
+    display: flex;
+    flex-direction: row;
+  }
 `
 
 const Title = styled.h3`
