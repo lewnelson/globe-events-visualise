@@ -27,7 +27,7 @@ export default class Globe extends Component {
   initialise ({ camera }) {
     this.texturesToLoad = 1
     if (this.props.bumpPath) this.texturesToLoad++
-    const geometry = new THREE.SphereGeometry(this.props.radius, 64, 64)
+    const geometry = new THREE.SphereBufferGeometry(this.props.radius, 64, 64)
     const material = this.getMaterial(this.props.imagePath, this.props.bumpPath, this.textureLoaded)
     this.obj = new THREE.Mesh(geometry, material)
     this.origin = new THREE.Vector3()

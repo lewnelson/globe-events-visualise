@@ -68,7 +68,7 @@ export default class GlobeMarker extends Component {
   }
 
   getPulseRingGeometry (radius) {
-    return new THREE.RingGeometry(radius, radius + (radius * PULSE_SCALE), 24, 1)
+    return new THREE.RingBufferGeometry(radius, radius + (radius * PULSE_SCALE), 24, 1)
   }
 
   setupPulseRing () {
@@ -91,7 +91,7 @@ export default class GlobeMarker extends Component {
     this.positionRaycaster = new THREE.Raycaster()
     this.origin = new THREE.Vector3()
     this.finalPosition = this.getFinalPosition()
-    const pointGeometry = new THREE.ConeGeometry(this.props.radius, this.props.radius * HEIGHT_SCALE, 16, 1)
+    const pointGeometry = new THREE.ConeBufferGeometry(this.props.radius, this.props.radius * HEIGHT_SCALE, 16, 1)
     const material = new THREE.MeshBasicMaterial({ color: this.markerColor })
     this.obj = new THREE.Mesh(pointGeometry, material)
 
@@ -165,7 +165,7 @@ export default class GlobeMarker extends Component {
     if (this.clickListenerSetup) return
     if (!this.props.onClick) return
     const size = this.props.radius * PULSE_RIPPLE_SCALE
-    const clickableGeometry = new THREE.BoxGeometry(size, size, size)
+    const clickableGeometry = new THREE.BoxBufferGeometry(size, size, size)
     this.clickableMesh = new THREE.Mesh(clickableGeometry)
     this.clickableMesh.position.copy(this.obj.position)
     this.clickableMesh.lookAt(this.origin)
@@ -178,7 +178,7 @@ export default class GlobeMarker extends Component {
   setupText () {
     const { locationName, eventCount, lat, lon } = this.props
     const font = new THREE.Font(droidSans)
-    const fontGeometry = new THREE.TextGeometry(eventCount > 1 ? `${locationName} (${eventCount})` : locationName, {
+    const fontGeometry = new THREE.TextBufferGeometry(eventCount > 1 ? `${locationName} (${eventCount})` : locationName, {
       font,
       size: 0.3,
       height: 0.04
