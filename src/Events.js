@@ -7,7 +7,6 @@ import Scene from './Scene'
 import Globe from './Globe'
 import GlobeMarker from './GlobeMarker'
 import Dialog from './Dialog'
-import Loader from './Loader'
 import SpotLight from './SpotLight'
 
 const Container = styled.div`
@@ -25,6 +24,12 @@ const Container = styled.div`
 
 class Events extends Component {
   static propTypes = {
+    // Called when the scene is ready and loaded 
+    onReady: PropTypes.func,
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+    ]),
     // Array of events to display on the globe
     events: PropTypes.arrayOf(PropTypes.arrayOf(
       PropTypes.shape({
@@ -79,8 +84,6 @@ class Events extends Component {
       markerHighlightColor: PropTypes.number,
       markerFontColor: PropTypes.number,
       markerFontHighlightColor: PropTypes.number,
-      loadingComponent: PropTypes.node,
-      loadingComponentColor: PropTypes.string,
       dialog: PropTypes.shape({
         titleFontFamily: PropTypes.string,
         titleFontColor: PropTypes.string,
@@ -127,8 +130,6 @@ class Events extends Component {
       markerHighlightColor: 0x1fc1c3,
       markerFontColor: 0x709cf0,
       markerFontHighlightColor: 0x1fc1c3,
-      loadingComponent: null,
-      loadingComponentColor: '#0000ff',
       dialog: {
         transitionName: 'dialog',
         transitionEnterTimeout: 500,
@@ -170,7 +171,9 @@ class Events extends Component {
 
   globeReady = async () => {
     await new Promise(resolve => setTimeout(resolve, 1000))
-    this._isMounted && this.setState({ globeReady: true })
+    if (!this._isMounted) return
+    this.props.onReady && this.props.onReady()
+    this.setState({ globeReady: true })
   }
 
   globeOnRotate = () => {
@@ -210,22 +213,6 @@ class Events extends Component {
     if (height < 300) height = 300
     if (height > 600) height = 600
     return height
-  }
-
-  renderLoader () {
-    const theme = { ...Events.defaultProps.theme, ...this.props.theme }
-    if (theme.loadingComponent) {
-      const LoadingComponent = theme.loadingComponent
-      return (
-        <Loader color={theme.loadingComponentColor}>
-          <LoadingComponent />
-        </Loader>
-      )
-    } else {
-      return (
-        <Loader color={theme.loadingComponentColor} />
-      )
-    }
   }
 
   renderDialog () {
@@ -291,7 +278,6 @@ class Events extends Component {
             ))
           }
         </Scene>
-        {!this.state.globeReady && this.renderLoader()}
         <ReactCSSTransitionGroup
           transitionName={dialog.transitionName}
           transitionEnterTimeout={dialog.transitionEnterTimeout}
@@ -303,6 +289,7 @@ class Events extends Component {
             </div>
           }
         </ReactCSSTransitionGroup>
+        {this.props.children}
       </Container>
     )
   }

@@ -181,13 +181,13 @@ export default class Dialog extends Component {
   getBackButtonIcon () {
     const { theme } = this.props
     if (typeof theme.backButton === 'string') return this.renderIonicon(theme.backButton, theme.buttonColor)
-    return <theme.backButton color={color} />
+    return theme.backButton
   }
 
   getCloseButtonIcon () {
     const { theme } = this.props
     if (typeof theme.closeButton === 'string') return this.renderIonicon(theme.closeButton, theme.buttonColor)
-    return <theme.closeButton color={color} />
+    return theme.closeButton
   }
 
   getHeader (title, showBack) {
