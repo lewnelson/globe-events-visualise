@@ -47,10 +47,8 @@ class Events extends Component {
         location: PropTypes.string.isRequired,
         // Appears in the dialog if defined, otherwise location is used
         address: PropTypes.string,
-        // Date of the event
-        date: PropTypes.string.isRequired,
-        // Local time of the event
-        localTime: PropTypes.string.isRequired,
+        // When is the event, any format is accepted
+        datetime: PropTypes.string.isRequired,
         // URL to the event
         url: PropTypes.string.isRequired
       }).isRequired

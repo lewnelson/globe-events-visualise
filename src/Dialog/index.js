@@ -97,8 +97,7 @@ export default class Dialog extends Component {
     events: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      localTime: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
+      datetime: PropTypes.string.isRequired,
       lat: PropTypes.number.isRequired,
       lon: PropTypes.number.isRequired,
       location: PropTypes.string.isRequired,
@@ -273,7 +272,7 @@ export default class Dialog extends Component {
                 </Field>
                 <Field>
                   <Label>When?</Label>
-                  <Value>{event.date} {event.localTime}</Value>
+                  <Value>{event.datetime}</Value>
                 </Field>
                 <Field>
                   <Label>Event URL:</Label>
