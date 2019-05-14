@@ -238,8 +238,8 @@ class Events extends Component {
         width={this.getDialogWidth()}
         height={this.getDialogHeight()}
         theme={{ ...defaultDialog, ...dialog }}
-        DialogTitleComponent={this.props.dialogTitleComponent}
-        DialogBodyComponent={this.props.dialogBodyComponent}
+        DialogTitleComponent={this.props.DialogTitleComponent}
+        DialogBodyComponent={this.props.DialogBodyComponent}
       />
     )
   }
