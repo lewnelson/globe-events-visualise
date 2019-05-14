@@ -80,6 +80,14 @@ class Events extends Component {
     }),
     // Distance that the markers will drop from space
     markerDropDistance: PropTypes.number,
+    // Component to use for the dialog title
+    // Receives props:
+    // - event (for single event, event object)
+    DialogTitleComponent: PropTypes.func,
+    // Component to use for the dialog body
+    // Receives props:
+    // - event (for single event, event object)
+    DialogBodyComponent: PropTypes.func,
     // Colors etc.
     theme: PropTypes.shape({
       markerColor: PropTypes.number,
@@ -230,6 +238,8 @@ class Events extends Component {
         width={this.getDialogWidth()}
         height={this.getDialogHeight()}
         theme={{ ...defaultDialog, ...dialog }}
+        DialogTitleComponent={this.props.dialogTitleComponent}
+        DialogBodyComponent={this.props.dialogBodyComponent}
       />
     )
   }

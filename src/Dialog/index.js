@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import * as Ionicons from 'react-icons/io'
@@ -107,6 +107,8 @@ export default class Dialog extends Component {
     closeDialog: PropTypes.func.isRequired,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
+    DialogTitleComponent: PropTypes.func,
+    DialogBodyComponent: PropTypes.func,
     theme: PropTypes.shape({
       titleFontFamily: PropTypes.string.isRequired,
       titleFontColor: PropTypes.string.isRequired,
@@ -190,7 +192,7 @@ export default class Dialog extends Component {
     return theme.closeButton
   }
 
-  getHeader (title, showBack) {
+  getHeader (title, showBack, DialogTitleComponent, event) {
     const { closeDialog, theme } = this.props
     return (
       <Header background={theme.headerBackground}>
@@ -207,7 +209,10 @@ export default class Dialog extends Component {
             fontFamily={theme.titleFontFamily}
             fontWeight={theme.titleFontWeight}
           >
-            {title}
+            {DialogTitleComponent &&
+              <DialogTitleComponent event={event} />
+            }
+            {!DialogTitleComponent && title}
           </Title>
           <CloseButton
             onClick={closeDialog}
@@ -249,26 +254,33 @@ export default class Dialog extends Component {
   }
 
   renderSingleEvent (event) {
-    const { theme } = this.props
+    const { theme, DialogBodyComponent } = this.props
     const width = this.getWidth()
     const height = this.getHeight()
     return (
       <Container className='dialog' width={width} height={height} background={theme.containerBackground} shadowColor={theme.shadowColor}>
-        {this.getHeader(event.name, this.props.events.length > 1)}
+        {this.getHeader(event.name, this.props.events.length > 1, this.props.DialogTitleComponent, event)}
         <ScrollWrapper>
           <Body className='dialog-body' fontFamily={theme.bodyFontFamily} color={theme.bodyFontColor} background={theme.bodyBackground}>
-            <Field>
-              <Label>Where?</Label>
-              <Value>{event.location}</Value>
-            </Field>
-            <Field>
-              <Label>When?</Label>
-              <Value>{event.date} {event.localTime}</Value>
-            </Field>
-            <Field>
-              <Label>Event URL:</Label>
-              <EventLink href={event.url} target='_blank' color={theme.linkColor}>{event.url}</EventLink>
-            </Field>
+            {DialogBodyComponent &&
+              <DialogBodyComponent event={event} />
+            }
+            {!DialogBodyComponent &&
+              <Fragment>
+                <Field>
+                  <Label>Where?</Label>
+                  <Value>{event.location}</Value>
+                </Field>
+                <Field>
+                  <Label>When?</Label>
+                  <Value>{event.date} {event.localTime}</Value>
+                </Field>
+                <Field>
+                  <Label>Event URL:</Label>
+                  <EventLink href={event.url} target='_blank' color={theme.linkColor}>{event.url}</EventLink>
+                </Field>
+              </Fragment>
+            }
           </Body>
         </ScrollWrapper>
       </Container>
