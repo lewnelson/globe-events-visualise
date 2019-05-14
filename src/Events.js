@@ -26,6 +26,8 @@ class Events extends Component {
   static propTypes = {
     // Called when the scene is ready and loaded 
     onReady: PropTypes.func,
+    // Enable/disable zoom controls
+    enableZoom: PropTypes.bool,
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node
@@ -121,6 +123,7 @@ class Events extends Component {
       intensity: 8,
       angle: Math.PI / 6
     },
+    enableZoom: true,
     markerDropDistance: 1,
     initRotationPoints: [],
     globeTextureURL: 'https://lewnelson.github.io/react-globe-events-visualiser/assets/images/textures/realistic-globe/globe.jpg',
@@ -237,7 +240,13 @@ class Events extends Component {
     const dialog = { ...Events.defaultProps.theme.dialog, ...(this.props.theme || {}).dialog }
     return (
       <Container width={this.props.width} height={this.props.height}>
-        <Scene width={this.props.width} height={this.props.height} controlsEnabled={this.state.controlsEnabled} initZoomLevel={this.props.initZoomLevel}>
+        <Scene
+          width={this.props.width}
+          height={this.props.height}
+          controlsEnabled={this.state.controlsEnabled}
+          initZoomLevel={this.props.initZoomLevel}
+          enableZoom={this.props.enableZoom}
+        >
           <SpotLight
             id='main_light'
             intensity={lighting.intensity}

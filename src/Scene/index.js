@@ -17,6 +17,7 @@ export default class Scene extends Component {
     height: PropTypes.number,
     children: PropTypes.any,
     controlsEnabled: PropTypes.bool,
+    enableZoom: PropTypes.bool.isRequired,
     controlsConfig: PropTypes.shape({
       minZoomSpeed: PropTypes.number,
       maxZoomSpeed: PropTypes.number,
@@ -141,7 +142,7 @@ export default class Scene extends Component {
   initialiseOrbits () {
     this.controls.enabled = this.props.controlsEnabled
     this.controls.enablePan = false
-    this.controls.enableZoom = false
+    this.controls.enableZoom = this.props.enableZoom
     this.controls.enableDamping = true
     this.controls.dampingFactor = 1.6
     this.controls.rotateSpeed = 1.0
