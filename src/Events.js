@@ -78,6 +78,8 @@ class Events extends Component {
     }),
     // Distance that the markers will drop from space
     markerDropDistance: PropTypes.number,
+    // How big is the font, defaults to 0.3
+    markerFontSize: PropTypes.number,
     // Component to use for the dialog title
     // Receives props:
     // - event (for single event, event object)
@@ -284,6 +286,7 @@ class Events extends Component {
                 lon={events[0].lon}
                 locationName={events[0].location}
                 radius={0.3}
+                fontSize={this.props.markerFontSize}
                 dropDistance={this.props.markerDropDistance}
                 zIndex={index}
                 onClick={(animationTime, done) => this.globeMarkerClicked(events, animationTime, done)}

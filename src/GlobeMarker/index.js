@@ -34,14 +34,16 @@ export default class GlobeMarker extends Component {
     fontColor: PropTypes.number,
     fontHighlightColor: PropTypes.number,
     markerColor: PropTypes.number,
-    markerHighlightColor: PropTypes.number
+    markerHighlightColor: PropTypes.number,
+    fontSize: PropTypes.number
   }
 
   static defaultProps = {
     fontColor: 0x000000,
     fontHighlightColor: 0x000000,
     markerColor: 0x000000,
-    markerHighlightColor: 0x000000
+    markerHighlightColor: 0x000000,
+    fontSize: 0.3
   }
 
   getPositionFromLatLon (lat, lon) {
@@ -180,7 +182,7 @@ export default class GlobeMarker extends Component {
     const font = new THREE.Font(droidSans)
     const fontGeometry = new THREE.TextBufferGeometry(eventCount > 1 ? `${locationName} (${eventCount})` : locationName, {
       font,
-      size: 0.3,
+      size: this.props.fontSize,
       height: 0.04
     })
     const center = this.origin.clone()
