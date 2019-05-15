@@ -209,7 +209,7 @@ export default class Dialog extends Component {
             fontWeight={theme.titleFontWeight}
           >
             {DialogTitleComponent &&
-              <DialogTitleComponent event={event} multipleEvents={typeof event === 'array'} />
+              <DialogTitleComponent event={event} multipleEvents={Array.isArray(event)} />
             }
             {!DialogTitleComponent && title}
           </Title>
