@@ -209,7 +209,7 @@ export default class Dialog extends Component {
             fontWeight={theme.titleFontWeight}
           >
             {DialogTitleComponent &&
-              <DialogTitleComponent event={event} />
+              <DialogTitleComponent event={event} multipleEvents={typeof event === 'array'} />
             }
             {!DialogTitleComponent && title}
           </Title>
@@ -232,13 +232,13 @@ export default class Dialog extends Component {
   }
 
   renderMultipleEvents () {
-    const { events, theme } = this.props
+    const { events, theme, DialogTitleComponent } = this.props
     const width = this.getWidth()
     const height = this.getHeight()
     const title = `Events near ${events[0].location}`
     return (
       <Container className='dialog' width={width} height={height} background={theme.containerBackground} shadowColor={theme.shadowColor}>
-        {this.getHeader(title, false)}
+        {this.getHeader(title, false, DialogTitleComponent, events)}
         <ScrollWrapper>
           <Body background={theme.bodyBackground}>
             {events.map((event, index) => (
@@ -253,12 +253,12 @@ export default class Dialog extends Component {
   }
 
   renderSingleEvent (event) {
-    const { theme, DialogBodyComponent } = this.props
+    const { theme, DialogBodyComponent, DialogTitleComponent } = this.props
     const width = this.getWidth()
     const height = this.getHeight()
     return (
       <Container className='dialog' width={width} height={height} background={theme.containerBackground} shadowColor={theme.shadowColor}>
-        {this.getHeader(event.name, this.props.events.length > 1, this.props.DialogTitleComponent, event)}
+        {this.getHeader(event.name, this.props.events.length > 1, DialogTitleComponent, event)}
         <ScrollWrapper>
           <Body className='dialog-body' fontFamily={theme.bodyFontFamily} color={theme.bodyFontColor} background={theme.bodyBackground}>
             {DialogBodyComponent &&
